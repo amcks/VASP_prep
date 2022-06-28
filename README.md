@@ -50,3 +50,16 @@ boundary condition.
 #### polydentate.py
 Currently only works by matching on edge to one cluster of adjacent surface site. In other words, adsorption of the ends of longer molecules
 (more than 2 atoms in length) is not currently implemented.
+
+## Output Generation
+At the end of the scripts, the adsorption modes (in the form of ASE's *atoms* object) can be written into the various forms using ASE's write function.
+
+For example, the format below can be used to generate a POSCAR file ready for VASP.
+
+```python
+from ase.io import write
+
+atoms = ads # atoms object
+
+atoms.write('POSCAR',format='vasp')
+```
