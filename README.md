@@ -13,6 +13,29 @@ Some packages may not be accessible via pip install directly, in which case, use
 conda install -c conda-forge python-levenshtein spglib
 ```
 
+## Hard-coded Changes to CatGen
+In some subscripts/modules in CatKit, some object attributes are called with a single leading underscore, i.e. indicating a weak internal use property. For some reason, this causes errors when the modules are being called from external scripts, and thus have been modified.
+
+In particular, in the module for translating the atomic representation into graph representation, via a script called *gratoms.py* under CatKit, any instance where the cell dimensions attribute of the atoms object is called via *._cell*, they need to be modified to call it without the leading underscore, as in *.cell*. See the example below
+
+From:
+
+```python
+atoms = self.__class__(cell=self._cell, pbc=self._pbc, info=self.info,
+                        celldisp=self._celldisp)
+```
+Note the section when the cell attribute is called in
+```python
+cell=self._cell
+```
+
+Modified to:
+```python
+atoms = self.__class__(cell=self.cell, pbc=self._pbc, info=self.info,
+                        celldisp=self._celldisp)
+```
+As of now, applying these changes to the cell attribute is enough to allow the codes to run.
+
 ## Scripts:
 ### Adsorption mode preparation
 Preparation of the adsorption modes involves defining both the catalyst slab and the molecules.
