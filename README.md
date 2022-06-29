@@ -16,7 +16,7 @@ conda install -c conda-forge python-levenshtein spglib
 ## Hard-coded Changes to CatGen
 In some subscripts/modules in CatKit, some object attributes are called with a single leading underscore, i.e. indicating a weak internal use property. For some reason, this causes errors when the modules are being called from external scripts, and thus have been modified.
 
-In particular, in the module for translating the atomic representation into graph representation, via a script called *gratoms.py* under CatKit, any instance where the cell dimensions attribute of the atoms object is called via *._cell*, they need to be modified to call it without the leading underscore, as in *.cell*. See the example below
+In particular, in the module for translating the atomic representation into graph representation, via a script called *gratoms.py* under CatKit, **_ALL_** instance where the cell dimensions attribute of the atoms object is called via *._cell*, they need to be modified to call it without the leading underscore, as in *.cell*. See the example below
 
 From:
 
