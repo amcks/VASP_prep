@@ -48,7 +48,7 @@ Functioning as intended, may want to be careful with atomic wrapping if the adso
 boundary condition.
 
 #### polydentate.py
-Currently only works by matching on edge to one cluster of adjacent surface site. In other words, adsorption of the ends of longer molecules
+Currently only works by matching one edge to one cluster of adjacent surface site. In other words, adsorption of the ends of longer molecules
 (more than 2 atoms in length) is not currently implemented.
 
 ## Output Generation
